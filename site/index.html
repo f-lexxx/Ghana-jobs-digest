@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ghana Jobs Digest</title>
+<link rel="alternate" type="application/rss+xml" title="Ghana Jobs Digest" href="feed.xml">
+<style>
+:root{
+  --bg:#f5f6f8;--panel:#fff;--ink:#16202c;--muted:#5d6b7a;--line:#e1e5ea;--accent:#1456d6;--accent-soft:#e6eefc;
+  --ok:#0f7b3f;--ok-bg:#e3f4ea;--bad:#b42318;--bad-bg:#fde8e6;--warn:#8a5a00;--warn-bg:#fff3d6;--na:#6b7785;--na-bg:#eef0f3;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.08);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f141a;--panel:#171e26;--ink:#e8edf2;--muted:#93a1b0;--line:#27313c;--accent:#6ea0ff;--accent-soft:#1b2a44;
+  --ok:#5fd18d;--ok-bg:#12301f;--bad:#ff8a80;--bad-bg:#3a1714;--warn:#f2c35b;--warn-bg:#35290c;--na:#9aa7b4;--na-bg:#232c36;--shadow:none}}
+:root[data-theme="dark"]{
+  --bg:#0f141a;--panel:#171e26;--ink:#e8edf2;--muted:#93a1b0;--line:#27313c;--accent:#6ea0ff;--accent-soft:#1b2a44;
+  --ok:#5fd18d;--ok-bg:#12301f;--bad:#ff8a80;--bad-bg:#3a1714;--warn:#f2c35b;--warn-bg:#35290c;--na:#9aa7b4;--na-bg:#232c36;--shadow:none}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:20px 16px 60px}
+header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+h1{font-size:22px;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:13px}
+button,select,input[type=search]{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 11px}
+button{cursor:pointer}button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}
+.stat{padding:9px 14px}.stat b{font-size:20px;display:block;letter-spacing:-.02em}.stat span{color:var(--muted);font-size:12.5px}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:14px;align-items:start}
+@media(max-width:860px){.layout{grid-template-columns:1fr}}
+.filters{padding:14px 16px;position:sticky;top:12px}
+@media(max-width:860px){.filters{position:static}}
+.filters h2{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:14px 0 6px}
+.filters h2:first-of-type{margin-top:10px}
+.filters label{display:flex;gap:8px;align-items:center;padding:2px 0;cursor:pointer;font-size:14px}
+.filters label span.c{margin-left:auto;color:var(--muted);font-size:12.5px}
+.filters input[type=search],.filters select{width:100%}
+.job{padding:14px 16px;margin-bottom:10px}
+.job.new{border-left:4px solid var(--accent)}
+.job h3{margin:0;font-size:16.5px;line-height:1.3}
+.job h3 a{color:var(--ink);text-decoration:none}.job h3 a:hover{color:var(--accent);text-decoration:underline}
+.meta{color:var(--muted);font-size:13.5px;margin-top:2px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.b{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;background:var(--na-bg);color:var(--na)}
+.b.ok{background:var(--ok-bg);color:var(--ok)}.b.bad{background:var(--bad-bg);color:var(--bad)}.b.warn{background:var(--warn-bg);color:var(--warn)}.b.acc{background:var(--accent-soft);color:var(--accent)}
+.snip{color:var(--muted);font-size:13.5px;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.foot{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.foot .grow{flex:1}
+.star{border:0;background:transparent;font-size:19px;padding:0 4px;color:var(--muted)}.star.on{color:#e0a100}
+.note{margin-top:8px;padding:6px 10px;border-radius:8px;background:var(--na-bg);color:var(--muted);font-size:12.5px}
+.empty{padding:40px 20px;text-align:center;color:var(--muted)}
+.more{display:block;margin:14px auto}
+details.src{margin-top:18px;padding:12px 16px}
+details.src summary{cursor:pointer;font-weight:600}
+details.src table{border-collapse:collapse;margin-top:8px;font-size:13px;width:100%}
+details.src td{padding:3px 8px;border-bottom:1px solid var(--line)}
+footer{margin-top:22px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <h1>Ghana Jobs Digest</h1>
+    <div class="sub" id="upd">Loading…</div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <a href="feed.xml" class="sub">RSS feed</a>
+    <button id="theme">Theme</button>
+  </div>
+</header>
+
+<div class="stats" id="stats"></div>
+
+<div class="layout">
+  <aside class="panel filters" id="filters">
+    <input type="search" id="q" placeholder="Search title, company, keyword">
+    <h2>Work mode</h2>
+    <div id="fMode"></div>
+    <h2>Where the job is</h2>
+    <div id="fWhere"></div>
+    <h2>Relocation support</h2>
+    <select id="fRel">
+      <option value="any">Any</option>
+      <option value="offered">Relocation / visa offered</option>
+      <option value="not_offered">Explicitly not offered</option>
+      <option value="unknown">Not stated</option>
+    </select>
+    <div class="sub" style="margin-top:4px">Choosing an option shows only jobs outside Ghana that would need you to move (on-site or hybrid).</div>
+    <h2>Source</h2>
+    <label><input type="checkbox" id="fEmp"> Employer career sites only</label>
+    <label><input type="checkbox" id="fNew"> New in the last day</label>
+    <label><input type="checkbox" id="fSaved"> Saved jobs <span class="c" id="cSaved"></span></label>
+    <h2>Sort</h2>
+    <select id="fSort"><option value="new">Newest first</option><option value="company">Company A–Z</option></select>
+    <button id="reset" style="margin-top:12px;width:100%">Reset filters</button>
+  </aside>
+
+  <main>
+    <div class="sub" id="count" style="margin-bottom:8px"></div>
+    <div id="list"></div>
+    <button class="more" id="more" style="display:none">Show more</button>
+    <details class="panel src" id="src"></details>
+    <footer id="foot"></footer>
+  </main>
+</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MODES=[['remote','Remote'],['hybrid','Hybrid'],['onsite','On-site']];
+const WHERE=[['ghana','In Ghana'],['remote-open','Remote, open to Ghana'],['remote-unspecified','Remote, check eligibility'],['abroad','Abroad (on-site / hybrid)'],['remote-restricted','Remote, not open to Ghana']];
+const DEFAULT_WHERE=['ghana','remote-open','remote-unspecified','abroad'];
+const S={jobs:[],modes:new Set(MODES.map(m=>m[0])),where:new Set(DEFAULT_WHERE),rel:'any',emp:false,fresh:false,saved:false,sort:'new',q:'',shown:50,saves:new Set()};
+try{JSON.parse(localStorage.getItem('gjd-saved')||'[]').forEach(x=>S.saves.add(x))}catch(e){}
+const persist=()=>{try{localStorage.setItem('gjd-saved',JSON.stringify([...S.saves]))}catch(e){}};
+
+$('theme').onclick=()=>{const r=document.documentElement;const d=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;r.dataset.theme=d?'light':'dark'};
+
+fetch('data/jobs.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(init).catch(()=>{
+  $('upd').textContent='No data yet';
+  $('list').innerHTML='<div class="panel empty">The first update has not run yet. It runs every morning at 06:00 GMT, or start it by hand from the Actions tab of your repository.</div>';
+});
+
+function ago(iso){
+  const d=(Date.now()-Date.parse(iso))/36e5;
+  if(d<1)return 'just now';if(d<24)return Math.round(d)+' h ago';
+  const days=Math.round(d/24);return days+' day'+(days>1?'s':'')+' ago';
+}
+function init(data){
+  S.jobs=data.jobs;S.data=data;
+  const t=new Date(data.generatedAt);
+  $('upd').textContent=`Updated ${t.toUTCString().slice(5,22)} GMT (${ago(data.generatedAt)}) · refreshes every morning at 06:00 GMT`;
+  buildFilters();render();
+  const okS=data.sources.filter(s=>s.ok).length;
+  $('src').innerHTML=`<summary>Where these jobs come from (${okS} of ${data.sources.length} sources responded)</summary><table>${data.sources.map(s=>`<tr><td>${esc(s.name)}</td><td>${s.ok?s.count+' jobs':'<span style="color:var(--bad)">not available: '+esc(s.error||'')+'</span>'}</td></tr>`).join('')}</table>`;
+  $('foot').innerHTML='How "verified" works: jobs come only from employers’ own career sites (via their public applicant-tracking feeds) and a small set of curated job boards. Every job links back to the original posting. Listings that ask for fees, chat-app applications or free-mail contact addresses are removed automatically. Always confirm a job on the employer’s own website before sharing personal documents or paying anything. Relocation and visa wording is read from the job text, so "Not stated" means the posting does not say.';
+}
+function count(fn){return S.jobs.filter(fn).length}
+function buildFilters(){
+  $('fMode').innerHTML=MODES.map(([k,l])=>`<label><input type="checkbox" data-m="${k}" checked> ${l}<span class="c">${count(j=>j.mode===k)}</span></label>`).join('');
+  $('fWhere').innerHTML=WHERE.map(([k,l])=>`<label><input type="checkbox" data-w="${k}" ${DEFAULT_WHERE.includes(k)?'checked':''}> ${l}<span class="c">${count(j=>j.access===k)}</span></label>`).join('');
+  $('fMode').querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?S.modes.add(i.dataset.m):S.modes.delete(i.dataset.m);S.shown=50;render()});
+  $('fWhere').querySelectorAll('input').forEach(i=>i.onchange=()=>{i.checked?S.where.add(i.dataset.w):S.where.delete(i.dataset.w);S.shown=50;render()});
+}
+$('q').oninput=e=>{S.q=e.target.value.trim().toLowerCase();S.shown=50;render()};
+$('fRel').onchange=e=>{S.rel=e.target.value;S.shown=50;render()};
+$('fEmp').onchange=e=>{S.emp=e.target.checked;S.shown=50;render()};
+$('fNew').onchange=e=>{S.fresh=e.target.checked;S.shown=50;render()};
+$('fSaved').onchange=e=>{S.saved=e.target.checked;S.shown=50;render()};
+$('fSort').onchange=e=>{S.sort=e.target.value;render()};
+$('more').onclick=()=>{S.shown+=50;render()};
+$('reset').onclick=()=>{
+  Object.assign(S,{modes:new Set(MODES.map(m=>m[0])),where:new Set(DEFAULT_WHERE),rel:'any',emp:false,fresh:false,saved:false,sort:'new',q:'',shown:50});
+  $('q').value='';$('fRel').value='any';$('fEmp').checked=$('fNew').checked=$('fSaved').checked=false;$('fSort').value='new';buildFilters();render();
+};
+
+function matches(j){
+  if(!S.modes.has(j.mode)||!S.where.has(j.access))return false;
+  if(S.rel!=='any'){
+    // only jobs outside Ghana that would need you to move are relevant here
+    if(j.access!=='abroad')return false;
+    const offered=j.relocation==='offered'||j.visa==='yes';
+    const notOff=!offered&&(j.relocation==='not_offered'||j.visa==='no');
+    if(S.rel==='offered'&&!offered)return false;
+    if(S.rel==='not_offered'&&!notOff)return false;
+    if(S.rel==='unknown'&&(offered||notOff))return false;
+  }
+  if(S.emp&&j.trust!=='employer')return false;
+  if(S.fresh&&!j.isNew)return false;
+  if(S.saved&&!S.saves.has(j.id))return false;
+  if(S.q&&!(`${j.title} ${j.company} ${j.location} ${j.tags.join(' ')} ${j.snippet}`).toLowerCase().includes(S.q))return false;
+  return true;
+}
+function badges(j){
+  const b=[];
+  b.push(`<span class="b acc">${{remote:'Remote',hybrid:'Hybrid',onsite:'On-site'}[j.mode]}</span>`);
+  const w={ghana:['In Ghana','ok'],'remote-open':['Open to Ghana','ok'],'remote-unspecified':['Check country eligibility','warn'],abroad:['Outside Ghana',''],'remote-restricted':['Not open to Ghana','bad']}[j.access];
+  b.push(`<span class="b ${w[1]}">${w[0]}</span>`);
+  if(j.access==='abroad'||j.access==='remote-restricted'){
+    if(j.relocation==='offered')b.push('<span class="b ok">Relocation offered</span>');
+    else if(j.relocation==='not_offered')b.push('<span class="b bad">No relocation</span>');
+    else b.push('<span class="b">Relocation not stated</span>');
+    if(j.visa==='yes')b.push('<span class="b ok">Visa sponsorship</span>');
+    else if(j.visa==='no')b.push('<span class="b bad">No visa sponsorship</span>');
+  }
+  b.push(j.trust==='employer'?'<span class="b ok" title="Posted on the employer’s own career site">✓ Employer site</span>':'<span class="b" title="Curated job board">Curated board</span>');
+  if(j.isNew)b.push('<span class="b acc">New</span>');
+  return b.join('');
+}
+function render(){
+  let list=S.jobs.filter(matches);
+  if(S.sort==='company')list=list.slice().sort((a,b)=>a.company.localeCompare(b.company)||a.title.localeCompare(b.title));
+  $('cSaved').textContent=S.saves.size||'';
+  const nNew=S.jobs.filter(j=>j.isNew).length;
+  $('stats').innerHTML=[[S.jobs.length,'jobs listed'],[nNew,'new today'],[count(j=>j.access==='ghana'),'in Ghana'],[count(j=>j.access==='remote-open'),'remote, open to Ghana'],[count(j=>j.access==='abroad'&&(j.relocation==='offered'||j.visa==='yes')),'abroad with relocation / visa']].map(([n,l])=>`<div class="panel stat"><b>${n}</b><span>${l}</span></div>`).join('');
+  $('count').textContent=`${list.length} job${list.length===1?'':'s'} match your filters`;
+  const part=list.slice(0,S.shown);
+  $('list').innerHTML=part.length?part.map(j=>`<article class="panel job ${j.isNew?'new':''}">
+    <h3><a href="${esc(j.url)}" target="_blank" rel="noopener noreferrer">${esc(j.title)}</a></h3>
+    <div class="meta">${esc(j.company)}${j.location?' · '+esc(j.location):''}${j.salary?' · '+esc(j.salary):''}</div>
+    <div class="badges">${badges(j)}</div>
+    ${j.snippet?`<div class="snip">${esc(j.snippet)}</div>`:''}
+    ${j.relocationNote&&(j.relocation!=='unknown'||j.visa)?`<div class="note">“${esc(j.relocationNote)}”</div>`:''}
+    <div class="foot"><span class="sub">via ${esc(j.sourceLabel)}${j.posted?' · posted '+esc(j.posted.slice(0,10)):''}</span><span class="grow"></span>
+      <button class="star ${S.saves.has(j.id)?'on':''}" data-id="${j.id}" title="Save this job" aria-label="Save job">${S.saves.has(j.id)?'★':'☆'}</button>
+      <a href="${esc(j.url)}" target="_blank" rel="noopener noreferrer"><button class="primary">View &amp; apply</button></a></div>
+  </article>`).join(''):'<div class="panel empty">No jobs match these filters. Try widening “Where the job is” or resetting the filters.</div>';
+  $('more').style.display=list.length>S.shown?'block':'none';
+  document.querySelectorAll('.star').forEach(b=>b.onclick=()=>{const id=b.dataset.id;S.saves.has(id)?S.saves.delete(id):S.saves.add(id);persist();render()});
+}
+})();
+</script>
+</body>
+</html>

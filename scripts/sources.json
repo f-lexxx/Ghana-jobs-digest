@@ -1,0 +1,19 @@
+{
+  "_readme": "Edit this file to change what is fetched. ATS entries are the company slug from its public careers URL (boards.greenhouse.io/<slug>, jobs.lever.co/<slug>, jobs.ashbyhq.com/<slug>). A wrong slug is simply skipped and logged.",
+  "boards": {
+    "remotive":  { "enabled": true },
+    "arbeitnow": { "enabled": true, "pages": 3 },
+    "jobicy":    { "enabled": true, "count": 100 }
+  },
+  "ats": {
+    "greenhouse": ["gitlab", "stripe", "cloudflare", "elastic", "mozilla", "wikimedia", "canonical", "datadog", "twilio"],
+    "lever":      ["palantir", "spotify", "netlify"],
+    "ashby":      ["notion", "ramp", "deel"]
+  },
+  "filters": {
+    "include_keywords": [],
+    "exclude_keywords": [],
+    "max_age_days": 45,
+    "max_jobs": 3000
+  }
+}

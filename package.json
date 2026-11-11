@@ -1,0 +1,1 @@
+{ "name": "ghana-jobs-digest", "private": true, "type": "module", "scripts": { "fetch": "node scripts/fetch-jobs.mjs", "test": "node tests/test-classify.mjs", "demo": "FIXTURE_DIR=tests/fixtures node scripts/fetch-jobs.mjs && npx serve site" }, "engines": { "node": ">=20" } }
